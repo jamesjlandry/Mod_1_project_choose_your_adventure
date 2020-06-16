@@ -1,6 +1,6 @@
 class CreateStoryTable < ActiveRecord::Migration[5.2]
   def change
-    create_table :story do |t|
+    create_table :stories do |t|
       t.string :text
       t.string :option_1
       t.string :option_2
