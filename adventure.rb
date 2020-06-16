@@ -1,4 +1,5 @@
 require_relative './config/environment.rb'
+ActiveRecord::Base.logger = nil
 
 class AdventureGame
 
@@ -11,6 +12,7 @@ class AdventureGame
  
     def start_game
 
+        puts "Welcome brave adventurer, or bored person just trying to play a game for a few minutes."
         puts "Please enter your Username:"
 
         @username = gets.chomp
@@ -70,7 +72,10 @@ class AdventureGame
             puts "Enter 1 for: #{@player_1.story.option_1}."  
             puts ""
             puts "Enter 2 for: #{@player_1.story.option_2}."
-            #puts "Enter 3 for #{@player_1.story_id: "3"}"
+            puts ""
+            puts "Enter 3 to quit this dumb game. Seriously, why did you start it in the first place? You might come back and play later. Probably not though."
+            puts ""
+
 
             user_choice = gets.chomp
 
@@ -80,61 +85,44 @@ class AdventureGame
                 @player_1 = User.find_by(name: @username)
                 pick = @player_1.story.option_1_link_id
                 @player_1.update(story_id: pick)
-                if pick == nil
-                    false
-                    puts "Seriously, you ded. Insert .25 to continue."
+                case pick
+                when 45
+                    @player_1.destroy
+                    start_game()
+                when 46
+                    @player_1.destroy
+                    return false
+                when 47
+                    @player_1.destroy
+                    puts "Go play a fun game now, like Smash Bros. or CoD"
+                    return false
                 end
             when 2
                 @player_1 = User.find_by(name: @username)
                 pick = @player_1.story.option_2_link_id
                 @player_1.update(story_id: pick)
-                    if pick == nil
-                        false
-                        puts "Seriously, you ded. Insert .25 to continue."
+                    case pick
+                    when 45
+                        @player_1.destroy
+                        start_game()
+                    when 46
+                        @player_1.destroy
+                        return false
+                    when 47
+                        @player_1.destroy
+                        puts "Go play a fun game now, like Smash Bros. or CoD"
+                        return false
                     end
 
             when 3
-                false
-
+                puts "Thank you for playing, I guess."
+                puts ""
+                return false
             
             end
-               
+
         end
     end
-
-    #start_game()
-    #continue_game()
 end
 
 AdventureGame.new()
-# method here to start the loop for pulling by story_id from User class.
-
-
-
-
-# method to create username or continue based on gets.chomp
-
-# if new game: puts opening text, if continue: puts text from story_id in User_id
-
-# when user makes a choice, update user table with new story_id
-
-# method to call role_id based on choices to update correct story_id column
-
-# method for linking choices back to the story primary id
-
-
-#class Game
-
-# def new_user(input)
-# username = gets.chomp()
-
-
-
-# current_user = User.create({ name: username }) 
-
-
-
-# end
-
-
-# end
