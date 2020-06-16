@@ -104,3 +104,15 @@ Flat Tire
 
 			Fight
 				She proves to much for you, you lose.
+
+
+
+"You wake up to your cell phone/'s alarm /'It/'s 6 o/'clock, time to wake up and save the city!/' Ugh, is it Monday already? You vaguely remember setting this alarm Friday afternoon when a Dragon decided to take residence at the top of City Hall. You were going to save the city then, but it was getting late, and you had a standing poker game with some fellow adventurers that night that you/'d already missed 3 weeks running. You couldn/’t make it a month and still save face afterward. Then of course, Saturday you had your appointment with your barber, and cancelling within 24 hours would end up with a $25 fee. You didn/'t think you had that much in your bank account. Sunday was right out because of your bi-annual family reunion which you never missed, because your great-uncle Charlie made the meanest BBQ sauce this side of the Mississippi, but he only brought it out for this event. So you had to push saving the city off till Monday, and honestly, the dragon had only torched a few cars that drove too close and all he'd managed to eat was politicians who were too slow to get out, so really, it wasn/'t so bad. But now people had to go to work downtown, and the dragon might get a little more aggressive with rush hour. You should probably do something about it. What do you do?"
+
+	options: 
+		1  if wizard: "Cast Fireball at phone. You/'re a wizard after all, fireball is the answer to everything."
+		1 if warrior: "Smash phone with mace" 
+		2 "Blearily walk to coffee machine" 
+		3 "Honestly, why did you start this adventure in the first place? Quit and come back later (maybe)"
+
+
