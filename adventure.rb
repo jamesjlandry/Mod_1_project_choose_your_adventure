@@ -113,9 +113,12 @@ class AdventureGame
                     Highscore.create(name: player_name, points: score)
                     awesomest = Highscore.order('points asc').first.points
                     best = Highscore.order('points asc').first.name
-                    
+                    puts""
+                    puts "Highscore Table"
+                    puts ""
+                    top_players = tp Highscore.all.order('points asc'), :name, "points"
+                    top_players.limit(5)
                     puts "The record holder is #{best} completing in #{awesomest} steps."
-                    puts Highscore.all
                     @player_1.destroy
                     puts ""
                     puts "Go play a fun game now, like Smash Bros. or CoD".magenta
@@ -143,9 +146,12 @@ class AdventureGame
                         Highscore.create(name: player_name, points: score)
                         awesomest = Highscore.order('points asc').first.points
                         best = Highscore.order('points asc').first.name
-                        
+                        puts""
+                        puts "Highscore Table"
+                        puts ""
+                        top_players = tp Highscore.all.order('points asc'), :name, "points"
+                        top_players.limit(5)
                         puts "The record holder is #{best} completing in #{awesomest} steps."
-                        puts Highscore.all
                         @player_1.destroy
                         puts ""
                         puts "Go play a fun game now, like Smash Bros. or CoD".magenta
@@ -162,19 +168,9 @@ class AdventureGame
             end
 
         end
+    
     end
 
-    # def  high_score
-        
-    #     Tracker.story_id.each  do |t|
-    #         if t == 33 || 31
-    #         score = t.user_id.count 
-    #         puts "#{score}"
-    #         end
-    #     end
-        
-    #end
-    
 
 end
 
