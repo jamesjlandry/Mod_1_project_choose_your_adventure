@@ -68,6 +68,8 @@ class AdventureGame
     end
 
     def onwards
+        #winning_array = []
+
         def chill
             yield.each_char { |c| putc c; $stdout.flush; sleep 0.05 }
         end
@@ -77,22 +79,24 @@ class AdventureGame
             chill do "#{@player_1.story.text}".cyan
             end
             puts ""
+            puts ""
             puts "Enter 1 for: #{@player_1.story.option_1}.".green 
             puts ""
             puts "Enter 2 for: #{@player_1.story.option_2}.".green
-            
             puts ""
             puts "Enter 3 to quit this dumb game. Seriously, why did you start it in the first place? You might come back and play later. Probably not though.".red
-            
             puts ""
 
 
             user_choice = gets.chomp
+                
+                #winning_array.push(user_choice.to_i)
 
             case user_choice.to_i
             
             when 1
                 @player_1 = User.find_by(name: @username)
+                #@player_1.update(tracker: winning_array)
                 pick = @player_1.story.option_1_link_id
                 @player_1.update(story_id: pick)
                 case pick
@@ -109,6 +113,7 @@ class AdventureGame
                 end
             when 2
                 @player_1 = User.find_by(name: @username)
+                #@player_1.update(tracker: winning_array)
                 pick = @player_1.story.option_2_link_id
                 @player_1.update(story_id: pick)
                     case pick
