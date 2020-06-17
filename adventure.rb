@@ -13,6 +13,7 @@ class AdventureGame
         self.start_game()
         self.onwards()
     end
+
  
     def start_game
 
@@ -29,9 +30,9 @@ class AdventureGame
         puts "Continue game?".cyan
         puts "Y/N?".cyan
 
-        cont = gets.chomp
+        cont = gets.chomp.upcase
 
-            if cont == "N" 
+            if cont == "N"
                 @existing_user.destroy
                 start_game()    
             elsif cont == "Y"
@@ -68,10 +69,10 @@ class AdventureGame
     end
 
     def onwards
-        #winning_array = []
+        
 
         def chill
-            yield.each_char { |c| putc c; $stdout.flush; sleep 0.05 }
+            yield.each_char { |c| putc c; $stdout.flush; sleep 0.0000005 }
         end
             while true 
             
@@ -86,18 +87,14 @@ class AdventureGame
             puts ""
             puts "Enter 3 to quit this dumb game. Seriously, why did you start it in the first place? You might come back and play later. Probably not though.".red
             puts ""
-
-
             user_choice = gets.chomp
-                
-                #winning_array.push(user_choice.to_i)
-
+        
             case user_choice.to_i
             
             when 1
                 @player_1 = User.find_by(name: @username)
-                #@player_1.update(tracker: winning_array)
                 pick = @player_1.story.option_1_link_id
+                Tracker.create(story_id: @player_1.story.id, user_id: @player_1.id)
                 @player_1.update(story_id: pick)
                 case pick
                 when 45
@@ -107,14 +104,27 @@ class AdventureGame
                     @player_1.destroy
                     return false
                 when 47
+                    score = Tracker.where(user_id: @player_1.id)
+                    score = score.count
+
+                    puts ""
+                    puts "You finished in #{score} steps. Please enter your name.".light_blue
+                    player_name = gets.chomp
+                    Highscore.create(name: player_name, points: score)
+                    awesomest = Highscore.order('points asc').first.points
+                    best = Highscore.order('points asc').first.name
+                    
+                    puts "The record holder is #{best} completing in #{awesomest} steps."
+                    puts Highscore.all
                     @player_1.destroy
+                    puts ""
                     puts "Go play a fun game now, like Smash Bros. or CoD".magenta
                     return false
                 end
             when 2
                 @player_1 = User.find_by(name: @username)
-                #@player_1.update(tracker: winning_array)
                 pick = @player_1.story.option_2_link_id
+                Tracker.create(story_id: @player_1.story.id, user_id: @player_1.id)
                 @player_1.update(story_id: pick)
                     case pick
                     when 45
@@ -124,10 +134,25 @@ class AdventureGame
                         @player_1.destroy
                         return false
                     when 47
+                        score = Tracker.where(user_id: @player_1.id)
+                        score = score.count
+                        
+                        puts ""
+                        puts "You finished in #{score} steps. Please enter your name.".light_magenta
+                        player_name = gets.chomp
+                        Highscore.create(name: player_name, points: score)
+                        awesomest = Highscore.order('points asc').first.points
+                        best = Highscore.order('points asc').first.name
+                        
+                        puts "The record holder is #{best} completing in #{awesomest} steps."
+                        puts Highscore.all
                         @player_1.destroy
+                        puts ""
                         puts "Go play a fun game now, like Smash Bros. or CoD".magenta
+                        
                         return false
                     end
+                
 
             when 3
                 puts "Thank you for playing, I guess.".red
@@ -138,6 +163,19 @@ class AdventureGame
 
         end
     end
+
+    # def  high_score
+        
+    #     Tracker.story_id.each  do |t|
+    #         if t == 33 || 31
+    #         score = t.user_id.count 
+    #         puts "#{score}"
+    #         end
+    #     end
+        
+    #end
+    
+
 end
 
 AdventureGame.new()
