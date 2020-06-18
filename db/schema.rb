@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_183424) do
+ActiveRecord::Schema.define(version: 2020_06_17_200940) do
 
-  create_table "role", force: :cascade do |t|
+  create_table "highscores", force: :cascade do |t|
     t.string "name"
+    t.integer "points"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.integer "story_id"
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.string "text"
+    t.string "option_1"
+    t.string "option_2"
+    t.string "option_3"
+    t.integer "option_1_link_id"
+    t.integer "option_2_link_id"
+  end
+
+  create_table "trackers", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "story_id"
   end
 
