@@ -72,7 +72,7 @@ class AdventureGame
         
 
         def chill
-            yield.each_char { |c| putc c; $stdout.flush; sleep 0.0000005 }
+            yield.each_char { |c| putc c; $stdout.flush; sleep 0.03 }
         end
             while true 
             
@@ -116,8 +116,8 @@ class AdventureGame
                     puts""
                     puts "Highscore Table"
                     puts ""
-                    top_players = tp Highscore.all.order('points asc'), :name, "points"
-                    top_players.limit(5)
+                    #top_players = tp Highscore.all.order('points asc'), :name, "points"
+                    #top_players.limit(5)
                     puts "The record holder is #{best} completing in #{awesomest} steps."
                     @player_1.destroy
                     puts ""
@@ -149,8 +149,8 @@ class AdventureGame
                         puts""
                         puts "Highscore Table"
                         puts ""
-                        top_players = tp Highscore.all.order('points asc'), :name, "points"
-                        top_players.limit(5)
+                        #top_players = tp Highscore.all.order('points asc'), :name, "points"
+                        #top_players.limit(5)
                         puts "The record holder is #{best} completing in #{awesomest} steps."
                         @player_1.destroy
                         puts ""
