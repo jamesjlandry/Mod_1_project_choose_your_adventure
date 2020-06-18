@@ -116,8 +116,8 @@ class AdventureGame
                     puts""
                     puts "Highscore Table"
                     puts ""
-                    #top_players = tp Highscore.all.order('points asc'), :name, "points"
-                    #top_players.limit(5)
+                    top_players = tp Highscore.all.order('points asc'), :name, "points"
+                    puts top_players.limit(5)
                     puts "The record holder is #{best} completing in #{awesomest} steps."
                     @player_1.destroy
                     puts ""
@@ -149,8 +149,8 @@ class AdventureGame
                         puts""
                         puts "Highscore Table"
                         puts ""
-                        #top_players = tp Highscore.all.order('points asc'), :name, "points"
-                        #top_players.limit(5)
+                        top_players = tp Highscore.all.order('points asc'), :name, "points"
+                        puts top_players.limit(5)
                         puts "The record holder is #{best} completing in #{awesomest} steps."
                         @player_1.destroy
                         puts ""
