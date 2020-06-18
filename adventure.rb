@@ -97,6 +97,20 @@ class AdventureGame
                 Tracker.create(story_id: @player_1.story.id, user_id: @player_1.id)
                 @player_1.update(story_id: pick)
                 case pick
+                when 31
+                    rng = [1,2,3,4,5,6,7,8,9,10]
+                    if rng.sample <= 2
+                        @player_1.update(story_id: 31)
+                    else
+                        @player_1.update(story_id: 50)
+                    end
+                when 33
+                    rng = [1,2,3,4,5,6,7,8,9,10]
+                    if rng.sample <= 3
+                        @player_1.update(story_id: 33)
+                    else
+                        @player_1.update(story_id: 51)
+                    end
                 when 45
                     @player_1.destroy
                     start_game()
@@ -115,7 +129,7 @@ class AdventureGame
                     best = Highscore.order('points asc').first.name
                     
                     puts "The record holder is #{best} completing in #{awesomest} steps."
-                    puts Highscore.all
+
                     @player_1.destroy
                     puts ""
                     puts "Go play a fun game now, like Smash Bros. or CoD".magenta
@@ -127,6 +141,20 @@ class AdventureGame
                 Tracker.create(story_id: @player_1.story.id, user_id: @player_1.id)
                 @player_1.update(story_id: pick)
                     case pick
+                    when 31
+                        rng = [1,2,3,4,5,6,7,8,9,10]
+                        if rng.sample <= 2
+                            @player_1.update(story_id: 31)
+                        else
+                            @player_1.update(story_id: 50)
+                        end
+                    when 33
+                        rng = [1,2,3,4,5,6,7,8,9,10]
+                        if rng.sample <= 3
+                            @player_1.update(story_id: 33)
+                        else
+                            @player_1.update(story_id: 51)
+                        end
                     when 45
                         @player_1.destroy
                         start_game()
@@ -158,24 +186,9 @@ class AdventureGame
                 puts "Thank you for playing, I guess.".red
                 puts ""
                 return false
-            
             end
-
         end
     end
-
-    # def  high_score
-        
-    #     Tracker.story_id.each  do |t|
-    #         if t == 33 || 31
-    #         score = t.user_id.count 
-    #         puts "#{score}"
-    #         end
-    #     end
-        
-    #end
-    
-
 end
 
 AdventureGame.new()
