@@ -171,6 +171,12 @@ Story.create({text: "You go to blast the old lady, but she's surprisingly fast. 
 #57
 Story.create({text: "You go to mace the old lady, but she's surprisingly fast. She dodges your mace as she transforms into an enormous ogre. She rips your mace from your hands and brings it down hard. Killed by your favorite mace. What a way to go.", option_1: "Forget this stupid game", option_2: "Insert .25 to try again.", option_3: "Honestly, why did you start this adventure to begin with. Quit and come back later, … maybe.", option_1_link_id: 46, option_2_link_id: 45})
 
+#58 
+Story.create({text: "You cast Fireball at your ex just as they turn around. The look of shock on your ex's face just before they die brings you a smile. You have rid the world of one more villian. Unfortunately, your favorite barista was caught in the blast, better get out of there.", option_1: "You better get out of there before the cops show up.", option_2: "You should turn yourself in, as soon as you save the city.", option_3: "Honestly, why did you start this adventure to begin with. Quit and come back later, … maybe." , option_1_link_id: 14, option_2_link_id: 14})
+
+#59
+Story.create({text: "Your mace comes down on your ex's head just as they turn around. The look of shock on your ex's face before they die brings you a smile. That's one more villian dispatched in the name of justice. The look on your favorite barista's face says she's going to call the cops. What do you do?", option_1: "You better get out of there before the cops show up.", option_2: "You can turn yourself in after you save the city. Your ex was a villian after all. They'll understand.", option_3: "Honestly, why did you start this adventure to begin with. Quit and come back later, … maybe." , option_1_link_id: 13, option_2_link_id: 13})
+
 Role.create({name: "Wizard", story_id: 1})
 
 Role.create({name: "Warrior", story_id: 2})

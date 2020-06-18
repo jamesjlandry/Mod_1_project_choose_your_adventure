@@ -70,18 +70,21 @@ class AdventureGame
 
     def onwards
         
+        def wrap(s, width=130)
+            s.gsub(/(.{1,#{width}})(\s+|\Z)/, "\\1\n")
+        end
 
         def chill
-            yield.each_char { |c| putc c; $stdout.flush; sleep 0.03 }
+            yield.each_char { |c| putc c; $stdout.flush; sleep 0.02 }
         end
             while true 
             
             puts ""
-            chill do "#{@player_1.story.text}".cyan
+            chill do wrap("#{@player_1.story.text}".cyan) 
             end
             puts ""
             puts ""
-            puts "Enter 1 for: #{@player_1.story.option_1}.".green 
+            puts "Enter 1 for: #{@player_1.story.option_1}.".green
             puts ""
             puts "Enter 2 for: #{@player_1.story.option_2}.".green
             puts ""
@@ -99,17 +102,32 @@ class AdventureGame
                 case pick
                 when 31
                     rng = [1,2,3,4,5,6,7,8,9,10]
-                    if rng.sample <= 2
+                    if rng.sample <= 7
                         @player_1.update(story_id: 31)
                     else
                         @player_1.update(story_id: 50)
                     end
                 when 33
                     rng = [1,2,3,4,5,6,7,8,9,10]
-                    if rng.sample <= 3
+                    if rng.sample <= 5
                         @player_1.update(story_id: 33)
                     else
                         @player_1.update(story_id: 51)
+                    end
+
+                when 19
+                    rng = [1,2,3,4,5,6,7,8,9,10]
+                    if rng.sample <= 7 
+                        @player_1.update(story_id: 19)
+                    else
+                        @player_1.update(story_id: 59)
+                    end
+                when 20
+                    rng = [1,2,3,4,5,6,7,8,9,10]
+                    if rng.sample <= 7
+                        @player_1.update(story_id: 20)
+                    else
+                        @player_1.update(story_id: 58)
                     end
                 when 45
                     @player_1.destroy
@@ -130,8 +148,8 @@ class AdventureGame
                     puts""
                     puts "Highscore Table"
                     puts ""
-                    top_players = tp Highscore.all.order('points asc'), :name, "points"
-                    puts top_players.limit(5)
+                    tp Highscore.limit(5).order('points asc'), :name, "points"
+                    puts ""
                     puts "The record holder is #{best} completing in #{awesomest} steps."
                     @player_1.destroy
                     puts ""
@@ -146,17 +164,31 @@ class AdventureGame
                     case pick
                     when 31
                         rng = [1,2,3,4,5,6,7,8,9,10]
-                        if rng.sample <= 2
+                        if rng.sample <= 7
                             @player_1.update(story_id: 31)
                         else
                             @player_1.update(story_id: 50)
                         end
                     when 33
                         rng = [1,2,3,4,5,6,7,8,9,10]
-                        if rng.sample <= 3
+                        if rng.sample <= 5
                             @player_1.update(story_id: 33)
                         else
                             @player_1.update(story_id: 51)
+                        end
+                    when 19
+                        rng = [1,2,3,4,5,6,7,8,9,10]
+                        if rng.sample <=7
+                            @player_1.update(story_id: 19)
+                        else
+                            @player_1.update(story_id: 59)
+                        end
+                    when 20
+                        rng = [1,2,3,4,5,6,7,8,9,10]
+                        if rng.sample <= 7
+                            @player_1.update(story_id: 20)
+                        else
+                            @player_1.update(story_id: 58)
                         end
                     when 45
                         @player_1.destroy
@@ -177,8 +209,8 @@ class AdventureGame
                         puts""
                         puts "Highscore Table"
                         puts ""
-                        top_players = tp Highscore.all.order('points asc'), :name, "points"
-                        puts top_players.limit(5)
+                        tp Highscore.limit(5).order('points asc'), :name, "points"
+                        puts ""
                         puts "The record holder is #{best} completing in #{awesomest} steps."
                         @player_1.destroy
                         puts ""

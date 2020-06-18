@@ -63,6 +63,7 @@ GEM
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     wisper (2.0.1)
+    word_wrap (1.0.0)
 
 PLATFORMS
   ruby
@@ -78,6 +79,7 @@ DEPENDENCIES
   sqlite3
   table_print
   tty-prompt
+  word_wrap
 
 BUNDLED WITH
    2.1.4
