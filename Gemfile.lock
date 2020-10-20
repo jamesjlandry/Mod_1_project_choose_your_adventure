@@ -31,7 +31,7 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    rack (2.2.2)
+    rack (2.2.3)
     rack-protection (2.0.8.1)
       rack
     rake (13.0.1)
@@ -63,7 +63,6 @@ GEM
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     wisper (2.0.1)
-    word_wrap (1.0.0)
 
 PLATFORMS
   ruby
@@ -79,7 +78,6 @@ DEPENDENCIES
   sqlite3
   table_print
   tty-prompt
-  word_wrap
 
 BUNDLED WITH
    2.1.4
